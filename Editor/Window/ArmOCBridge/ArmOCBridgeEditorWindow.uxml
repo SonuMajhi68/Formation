@@ -1,0 +1,126 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Tools/ArmOCBridgeEditorWindow.uss?fileID=7433441132597879392&amp;guid=9c4a20e68f757b2419758d9bc427de25&amp;type=3#ArmOCBridgeEditorWindow"/>
+    <ui:ScrollView>
+        <ui:Label text="Arm Offline Compiler Bridge" name="title" style="-unity-text-align: middle-center; -unity-text-outline-color: rgb(113, 113, 113); background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; height: 30px;"/>
+        <ui:Foldout text="Configuration" enabled="true" value="true" name="configuration" class="folder">
+            <ui:VisualElement name="config-container" class="folder-container" style="flex-grow: 1;">
+                <ui:VisualElement name="" style="flex-grow: 1; flex-direction: row;">
+                    <ui:TextField label="Mali Compiler Path" placeholder-text="none" name="browsePath" readonly="true" style="flex-grow: 1; flex-shrink: 1;"/>
+                    <ui:Button text="Browse" name="browseBtn"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="" style="flex-grow: 1; flex-direction: row;">
+                    <ui:TextField label="Save Folder Path" placeholder-text="none" name="folderPath" readonly="true" style="flex-grow: 1; flex-shrink: 1;"/>
+                    <ui:Button text="Browse" name="folderPathBtn"/>
+                </ui:VisualElement>
+                <ui:DropdownField label="GPU Model" name="gpuModel"/>
+                <ui:Label text="Options :" style="-unity-font-style: bold; margin-top: 10px; margin-bottom: 4px;"/>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Toggle label="Detailed View" name="detailToggle" style="flex-grow: 0;"/>
+                        <ui:Toggle label="Show Suggestion" name="suggestionToggle" style="flex-grow: 0; display: flex;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1;">
+                        <ui:Toggle label="Auto Save Result" name="saveToggle" style="flex-grow: 0;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Foldout text="Shader Selection" name="shader" class="folder">
+            <ui:VisualElement name="shader-container" class="folder-container" style="flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <uie:ObjectField label="Shader" type="UnityEngine.Shader, UnityEngine.CoreModule" name="selectedShader" style="flex-grow: 1; flex-shrink: 1;"/>
+                    <ui:Button text="Compile" name="compileBtn" style="flex-shrink: 0; flex-grow: 0;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:Foldout text="Varient Selection" name="varient" class="folder">
+            <ui:VisualElement class="folder-container" style="flex-grow: 1; flex-direction: column;">
+                <ui:Label text="Filter :" name="" enabled="true" style="-unity-font-style: bold; margin-top: 10px; margin-bottom: 10px; display: none;"/>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; flex-direction: column;">
+                        <ui:TextField label="Pass" placeholder-text="none" name="pass" style="flex-grow: 0; width: auto; flex-direction: row;"/>
+                        <ui:TextField label="Keyword" placeholder-text="none" name="keyword" style="flex-grow: 0; width: auto;"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="" style="flex-grow: 0; padding-top: 4px; padding-right: 6px; padding-bottom: 4px; padding-left: 6px; background-color: rgb(53, 53, 53); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; margin-top: 0; flex-direction: row; height: auto;">
+                        <ui:Button text="Search FIlter" name="searchBtn" style="height: 30px; flex-grow: 1;"/>
+                        <ui:Button text="Clear" name="clearBtn" style="flex-grow: 0; height: 30px;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Label text="Varient :" name="" style="-unity-font-style: bold; margin-top: 10px; margin-bottom: 5px;"/>
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:TabView name="" style="flex-grow: 1; height: 200px; width: 80%;">
+                        <ui:Tab label="Vertex Code " name="var-vertexTab">
+                            <ui:VisualElement class="code-container" style="flex-grow: 1; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px; flex-direction: column; height: 200px;">
+                                <ui:ScrollView mode="VerticalAndHorizontal">
+                                    <ui:Label text="" name="vertexComp" selectable="true" focusable="true"/>
+                                </ui:ScrollView>
+                                <ui:Button text="Copy" name="copyVert" style="display: flex; visibility: visible; position: absolute; right: 25px; bottom: auto; top: 5px;"/>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                        <ui:Tab label="Fragment Code " name="var-fragmentTab">
+                            <ui:VisualElement class="code-container" style="flex-grow: 1; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px;">
+                                <ui:ScrollView mode="VerticalAndHorizontal">
+                                    <ui:Label text="" name="fragmentComp" selectable="true" focusable="true"/>
+                                </ui:ScrollView>
+                                <ui:Button text="Copy" name="copyFrag" style="position: absolute; right: 25px; bottom: auto; top: 5px;"/>
+                            </ui:VisualElement>
+                        </ui:Tab>
+                    </ui:TabView>
+                    <ui:VisualElement name="" style="flex-grow: 1; width: 250px; margin-left: 6px;">
+                        <ui:VisualElement style="flex-grow: 0; flex-direction: row; height: 30px;">
+                            <ui:Button text="Prev" name="prevBtn" style="flex-grow: 1; margin-right: 0; margin-left: 0; border-top-left-radius: 6px; border-bottom-left-radius: 6px;"/>
+                            <ui:Button text="Next" name="nextBtn" style="flex-grow: 1; margin-right: 0; margin-left: 0; border-top-right-radius: 6px; border-bottom-right-radius: 6px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; flex-direction: row; margin-bottom: 6px; height: auto;">
+                            <ui:Label text="Varient Index :" style="-unity-font-style: bold;"/>
+                            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                                <ui:Label text="&lt;none&gt;" name="currVar"/>
+                                <ui:Label text="/"/>
+                                <ui:Label text="&lt;none&gt;" name="totalVar"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 0; height: 40px;">
+                            <ui:Label text="Current Pass :" style="-unity-font-style: bold;"/>
+                            <ui:Label text="&lt;none&gt;" name="currPass" style="font-size: 12px;"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement style="flex-grow: 1;">
+                            <ui:Label text="Current Keyword:" style="-unity-font-style: bold;"/>
+                            <ui:Label text="&lt;none&gt;" name="currKeyword" style="font-size: 12px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:Foldout>
+        <ui:VisualElement style="flex-grow: 1; margin-left: 15px; margin-right: 15px; flex-direction: row; color: rgb(27, 27, 27); background-color: rgb(64, 64, 64); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-left-color: rgb(35, 35, 35); border-right-color: rgb(35, 35, 35); border-top-color: rgb(35, 35, 35); border-bottom-color: rgb(35, 35, 35); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px; margin-top: 8px; margin-bottom: 8px;">
+            <ui:Button text="Start Analysis" name="analyzeBtn" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); height: 30px; flex-grow: 8;"/>
+            <ui:Button text="Save Report" name="saveBtn" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); height: 30px; flex-grow: 1;"/>
+            <ui:Button text="Clear Report" name="clearReportBtn" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); height: 30px; flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:Foldout text="Analysis Report" name="report" class="folder">
+            <ui:VisualElement class="folder-container" style="flex-grow: 1; flex-direction: column;">
+                <ui:TabView name="" style="flex-grow: 1; height: 250px;">
+                    <ui:Tab label="Vertex Shader Result" name="vsr-vertexTab" style="flex-grow: 0; height: auto;">
+                        <ui:VisualElement class="code-container" style="flex-grow: 1; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px; height: 250px;">
+                            <ui:ScrollView>
+                                <ui:Label text="" name="vertexResult" selectable="true" focusable="true"/>
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                    </ui:Tab>
+                    <ui:Tab label="Fragment Shader Result " name="vsr-fragmentTab">
+                        <ui:VisualElement class="code-container" style="flex-grow: 1; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px; height: 250px;">
+                            <ui:ScrollView>
+                                <ui:Label text="" name="fragmentResult" selectable="true" focusable="true"/>
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                    </ui:Tab>
+                </ui:TabView>
+                <ui:VisualElement name="Suggestion-block" style="flex-grow: 0; width: auto; margin-left: 6px; margin-top: 6px; display: flex;">
+                    <ui:Label text="Suggestion" style="-unity-font-style: bold;"/>
+                    <ui:VisualElement name="suggestion-box" style="flex-grow: 1; min-height: 50px; border-left-color: rgb(35, 35, 35); border-right-color: rgb(35, 35, 35); border-top-color: rgb(35, 35, 35); border-bottom-color: rgb(35, 35, 35); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; margin-top: 4px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <ui:VisualElement style="flex-grow: 1; background-color: rgb(43, 43, 43); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:Foldout>
+    </ui:ScrollView>
+</ui:UXML>

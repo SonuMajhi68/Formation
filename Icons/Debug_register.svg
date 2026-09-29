@@ -1,0 +1,38 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#C4C4C4"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13.001 16.066 A1.5 1.5 0 0 1 14.938 14.566" />
+  <path d="M13.048 18.576 L11.548 18.576" />
+  <path d="M13.063 16 L11.563 14.5" />
+  <path d="M13.111 16.076 L13.048 18.576" />
+  <path d="M14 2 A2 2 0 0 1 16 4" />
+  <path d="M14.5 21.5 A3.5 3.5 0 0 0 12.507 22.123" />
+  <path d="M15 14.5 A2 2 0 0 1 19 14.5" />
+  <path d="M16 4 L16 9" />
+  <path d="M16 6 L18 6" />
+  <path d="M18.856 14.507 A1.5 1.5 0 0 1 20.497 15.913" />
+  <path d="M19 14.5 L15 14.5" />
+  <path d="M2 12 L4 12" />
+  <path d="M2 18 L4 18" />
+  <path d="M2 6 L4 6" />
+  <path d="M20.497 15.913 L20.5 18.5" />
+  <path d="M20.5 18.5 A3.73 3.73 0 0 1 13.048 18.576" />
+  <path d="M21.007 22.133 A3.5 3.5 0 0 0 19.164 21.504" />
+  <path d="M22 14.5 L20.497 15.913" />
+  <path d="M22 18.5 L20.5 18.5" />
+  <path d="M4 20 L4 4" />
+  <path d="M4 4 A2 2 0 0 1 6 2" />
+  <path d="M6 2 L14 2" />
+  <path d="M6 22 A2 2 0 0 1 4 20" />
+  <path d="M8 10.5 L12 10.5" />
+  <path d="M8 6.5 L12 6.5" />
+  <path d="M9 22 L6 22" />
+</svg>

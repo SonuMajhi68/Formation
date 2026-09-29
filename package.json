@@ -1,0 +1,15 @@
+{
+  "name": "com.SonuMajhi68.Formation",
+  "version": "1.0.0",
+  "displayName": "Formation",
+  "description": "This is an example package",
+  "unity": "2022.3",
+  "dependencies": {
+    "com.unity.memoryprofiler": "1.1.12",
+    "com.unity.project-auditor": "1.0.2"
+ },
+  "author": {
+    "name": "SonuMajhi68",
+    "url": "https://github.com/SonuMajhi68/Formation"
+  }
+}
