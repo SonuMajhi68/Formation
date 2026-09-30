@@ -14,8 +14,14 @@ namespace Formation.Toolbar
         [MainToolbarElement(toolbarName, defaultDockPosition = MainToolbarDockPosition.Right)]
         public static MainToolbarElement GetArmOCBridgeEditorWindow()
         {
-            Texture2D customIcon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Tools/Icons/Debug_register.svg");
-            var button = new MainToolbarButton(new MainToolbarContent(customIcon, "ArmOC"), ArmOCBridgeEditor.OpenEditorWindow);
+            Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Extension/Icons/Debug_register.svg");
+
+            if(icon == null)
+            {
+                icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Packages/com.sonumajhi68.formation/Icons/Debug_register.svg");
+            }
+
+            var button = new MainToolbarButton(new MainToolbarContent(icon, "ArmOC"), ArmOCBridgeEditor.OpenEditorWindow);
 
             EditorElementStyler.StyleElement<UnityEditor.Toolbars.EditorToolbarButton>(toolbarName, element =>
             {
@@ -30,7 +36,7 @@ namespace Formation.Toolbar
                     image.style.height = 14f;
                 }
             });
-            Debug.Log("");
+
             return button;
         }
     }

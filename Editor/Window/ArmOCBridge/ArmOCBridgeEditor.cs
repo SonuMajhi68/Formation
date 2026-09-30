@@ -88,7 +88,16 @@ namespace Formation.ArmOCBridge
         private void CreateGUI()
         {
             VisualElement root = rootVisualElement;
-            VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Tools/ArmOCBridgeEditorWindow.uxml");
+
+            string path = "Assets/Extension/Editor/Window/ArmOCBridge/ArmOCBridgeEditorWindow.uxml";
+            VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
+
+            if (visualTree == null)
+            {
+                //Debug.Log("1");
+                path = "Packages/com.sonumajhi68.formation/Editor/Window/ArmOCBridge/ArmOCBridgeEditorWindow.uxml";
+                visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(path);
+            }
 
             VisualElement tree = visualTree.Instantiate();
             root.Add(tree);

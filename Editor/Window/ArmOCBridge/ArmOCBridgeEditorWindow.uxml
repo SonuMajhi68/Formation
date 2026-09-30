@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <Style src="project://database/Assets/Tools/ArmOCBridgeEditorWindow.uss?fileID=7433441132597879392&amp;guid=9c4a20e68f757b2419758d9bc427de25&amp;type=3#ArmOCBridgeEditorWindow"/>
+    <Style src="project://database/Assets/Extension/Editor/Window/ArmOCBridge/ArmOCBridgeEditorWindow.uss?fileID=7433441132597879392&amp;guid=9c4a20e68f757b2419758d9bc427de25&amp;type=3#ArmOCBridgeEditorWindow"/>
     <ui:ScrollView>
         <ui:Label text="Arm Offline Compiler Bridge" name="title" style="-unity-text-align: middle-center; -unity-text-outline-color: rgb(113, 113, 113); background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; height: 30px;"/>
         <ui:Foldout text="Configuration" enabled="true" value="true" name="configuration" class="folder">

@@ -10,16 +10,16 @@ namespace Formation.Toolbar
     public class AnalysisMainToolbar
     {
         const string toolbarName = "Personal/Analysis";
-        static readonly (string, string, string)[] s_Elements =
-            new (string icon, string tooptip, string menuPath)[]
+        static readonly (string, string, string, string)[] s_Elements =
+            new (string icon1, string icon2, string tooptip, string menuPath)[]
             {
-                ("Assets/Tools/Icons/Debug_audit.svg"       , "Project Auditor"     ,"Window/Analysis/Project Auditor"),
-                ("Assets/Tools/Icons/Debug_profiler.svg"    , "Profiler"            ,"Window/Analysis/Profiler"),
-                ("Assets/Tools/Icons/Debug_memory.svg"      , "Memory Profiler"     ,"Window/Analysis/Memory Profiler"),
-                ("Assets/Tools/Icons/Debug_frame.svg"       , "Frame Debugger"      ,"Window/Analysis/Frame Debugger"),
-                ("Assets/Tools/Icons/Debug_rendering.svg"   , "Rendering Debugger"  ,"Window/Analysis/Rendering Debugger"),
-                ("Assets/Tools/Icons/Debug_RGV.svg"         , "Render Graph Viewer" ,"Window/Analysis/Render Graph Viewer"),
-                ("Assets/Tools/Icons/Debug_register.svg"    , "ArmOC Bridge"        ,"Tools/Arm Offline Compiler Bridge")
+                ("Assets/Extension/Icons/Debug_audit.svg"       , "Packages/com.sonumajhi68.formation/Icons/Debug_audit.svg"      , "Project Auditor"     ,"Window/Analysis/Project Auditor"),
+                ("Assets/Extension/Icons/Debug_profiler.svg"    , "Packages/com.sonumajhi68.formation/Icons/Debug_profiler.svg"   , "Profiler"            ,"Window/Analysis/Profiler"),
+                ("Assets/Extension/Icons/Debug_memory.svg"      , "Packages/com.sonumajhi68.formation/Icons/Debug_memory.svg"     , "Memory Profiler"     ,"Window/Analysis/Memory Profiler"),
+                ("Assets/Extension/Icons/Debug_frame.svg"       , "Packages/com.sonumajhi68.formation/Icons/Debug_frame.svg"      , "Frame Debugger"      ,"Window/Analysis/Frame Debugger"),
+                ("Assets/Extension/Icons/Debug_rendering.svg"   , "Packages/com.sonumajhi68.formation/Icons/Debug_rendering.svg"  , "Rendering Debugger"  ,"Window/Analysis/Rendering Debugger"),
+                ("Assets/Extension/Icons/Debug_RGV.svg"         , "Packages/com.sonumajhi68.formation/Icons/Debug_RGV.svg"        , "Render Graph Viewer" ,"Window/Analysis/Render Graph Viewer"),
+                ("Assets/Extension/Icons/Debug_register.svg"    , "Packages/com.sonumajhi68.formation/Icons/Debug_register.svg"   , "ArmOC Bridge"        ,"Tools/Arm Offline Compiler Bridge")
                 //("Assets/Tools/Icons/Debug_graphic.svg", "Open the Profiler window","Window/Analysis/Profiler"),
             };
 
@@ -33,10 +33,17 @@ namespace Formation.Toolbar
         {
             if (s_DisplayAsButtons)
             {
+                bool isPublished = false;
                 foreach (var element in s_Elements)
                 {
-                    Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>(element.Item1);
-                    yield return new MainToolbarButton(new MainToolbarContent(icon, element.Item2), () => EditorApplication.ExecuteMenuItem(element.Item3))
+                    Texture2D icon = AssetDatabase.LoadAssetAtPath<Texture2D>((isPublished) ? element.Item2 : element.Item1);
+                    if(icon == null)
+                    {
+                        icon = AssetDatabase.LoadAssetAtPath<Texture2D>(element.Item2);
+                        isPublished = true;
+                    }
+
+                    yield return new MainToolbarButton(new MainToolbarContent(icon, element.Item3), () => EditorApplication.ExecuteMenuItem(element.Item4))
                     {
                         populateContextMenu = PopulateContextMenu,
                     };
@@ -108,9 +115,9 @@ namespace Formation.Toolbar
             var menu = new GenericMenu();
             foreach (var element in s_Elements)
             {
-                menu.AddItem(new GUIContent(element.Item2), false, () =>
+                menu.AddItem(new GUIContent(element.Item3), false, () =>
                 {
-                    EditorApplication.ExecuteMenuItem(element.Item3);
+                    EditorApplication.ExecuteMenuItem(element.Item4);
                 });
             }
             menu.DropDown(dropDownRect);
